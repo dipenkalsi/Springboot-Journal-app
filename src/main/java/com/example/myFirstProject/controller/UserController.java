@@ -38,4 +38,9 @@ public class UserController {
     public List<JournalEntry> getUserJournalEntries(@PathVariable Long userId) {
         return userService.getUserJournalEntries(userId);
     }
+
+    @DeleteMapping("/{userId}")
+    public void deleteUser(@PathVariable Long userId) {
+        userService.deleteUser(userId);
+    }
 }
