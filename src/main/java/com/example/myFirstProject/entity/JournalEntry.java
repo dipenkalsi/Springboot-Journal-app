@@ -1,9 +1,7 @@
 package com.example.myFirstProject.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 
 @Entity //Means this is an entity
 @Table(name="Journal") //Name of the table in the database where the journals will be stored.
@@ -15,6 +13,14 @@ public class JournalEntry {
     private String title;
     @Column(name = "Content")
     private String content;
+
+//    @Column(name="OwnerId")
+//    private long OwnerId;
+
+    @ManyToOne
+    @JoinColumn(name = "UserId", nullable = false)
+    @JsonBackReference
+    private User user;
 
     public long getId() {
         return id;
@@ -38,5 +44,13 @@ public class JournalEntry {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

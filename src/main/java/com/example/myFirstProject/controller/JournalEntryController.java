@@ -31,7 +31,6 @@ public class JournalEntryController {
 
     @PostMapping
     public boolean createEntries(@RequestBody JournalEntry myEntry){
-//        journalEntries.put(myEntry.getId(), myEntry);
         journalEntryService.create(myEntry);
         return true;
     }
